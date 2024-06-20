@@ -1,0 +1,34 @@
+<p>table works!</p>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Course</th>
+        <th scope="col">Hobbies</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let std of readData">
+        <td>{{ std.id }}</td>
+        <td>{{ std.name }}</td>
+        <td>{{ std.age }}</td>
+        <td>{{ std.gender }}</td>
+        <td>{{ std.course }}</td>
+        <td>{{ std.hobbies }}</td>
+        <td>
+          <a [routerLink]="['/student',std.id]"
+            ><button class="btn btn-info" (click)="onEdit(std.id)">
+              Edit
+            </button></a
+          >&nbsp;<button class="btn btn-danger" (click)="onDelete(std.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" routerLink="" class="btn btn-dark">Back</button>
+</div>

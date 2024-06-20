@@ -1,0 +1,70 @@
+<div class="container mt-5 form-background">
+    <form [formGroup]="stdform">
+      <div class="mb-3">
+        <label for="stdname" class="form-label">Student Name:</label>
+        <input type="text" class="form-control" id="stdname" formControlName="stdname"/>
+        <div *ngIf="stdform.get('stdname')?.invalid && (stdform.get('stdname')?.dirty || stdform.get('stdname')?.touched)" class="text-danger">
+          <span *ngIf="stdform.get('stdname')?.errors?.required">Name is required.</span>
+          <span *ngIf="stdform.get('stdname')?.errors?.minlength">Name should be above 2 characters.</span>
+          <span *ngIf="stdform.get('stdname')?.errors?.maxlength">Name can't be above 5 characters.</span>
+          <span *ngIf="stdform.get('stdname')?.errors?.pattern">Invalid characters.</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="stdage" class="form-label">Student Age:</label>
+        <input type="text" class="form-control" id="stdage" formControlName="stdage"/>
+        <div *ngIf="stdform.get('stdage')?.invalid && (stdform.get('stdage')?.dirty || stdform.get('stdage')?.touched)" class="text-danger">
+          <span *ngIf="stdform.get('stdage')?.errors?.required">Age is required.</span>
+          <span *ngIf="stdform.get('stdage')?.errors?.minlength">Age should be above 2 characters.</span>
+          <span *ngIf="stdform.get('stdage')?.errors?.maxlength">Age can't be above 5 characters.</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="gender" class="form-label">Gender:</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gender" formControlName="gender" id="male" value="male">
+          <label class="form-check-label" for="male">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gender" formControlName="gender" id="female" value="female">
+          <label class="form-check-label" for="female">Female</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gender" formControlName="gender" id="others" value="others">
+          <label class="form-check-label" for="others">Others</label>
+        </div>
+      </div>
+  
+      <!-- Select element for course -->
+      <div class="mb-3">
+        <label for="course" class="form-label">Course:</label>
+        <select class="form-select" id="course" formControlName="course">
+          <option value="" disabled>Select a course</option>
+          <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
+        </select>
+      </div>
+  
+      <!-- Checkbox group for hobbies -->
+      <div class="mb-3">
+        <label class="form-label">Hobbies:</label>
+        <div *ngFor="let hobby of hobbies" class="form-check">
+          <input class="form-check-input" type="checkbox" [formControlName]="hobby" [id]="hobby">
+          <label class="form-check-label" [for]="hobby">{{ hobby }}</label>
+        </div>
+      </div>
+  
+      <div class="col-lg-4 mt-2" *ngIf="!stdId" (click)="onSubmit()">
+        <button class="btn btn-primary btn-sm">Submit</button>&nbsp;
+        <button type="button" routerLink="" class="btn btn-dark btn-sm">
+          Back
+        </button>
+      </div>
+      <div class="col-lg-4 mt-2" *ngIf="stdId" (click)="onUpdate()">
+        <button class="btn btn-success btn-sm">Update</button>&nbsp;
+        <button type="button" routerLink="" class="btn btn-dark btn-sm">
+          Back
+        </button>
+      </div>
+    </form>
+  </div>
+  
