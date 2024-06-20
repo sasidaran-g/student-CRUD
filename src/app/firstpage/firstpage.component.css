@@ -1,0 +1,45 @@
+/* Container styling */
+.container {
+  margin-top: 5rem;
+}
+
+/* Navigation styling */
+.nav {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Navigation item styling */
+.nav-item {
+  margin-right: 1rem;
+}
+
+/* Navigation link styling */
+.nav-link {
+  text-decoration: none;
+}
+
+/* Button styling */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* Secondary button styling */
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+/* Warning button styling */
+.btn-warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+/* Button hover effects */
+.btn:hover {
+  opacity: 0.8;
+}
