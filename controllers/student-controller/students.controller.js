@@ -103,7 +103,7 @@ function send200AndData(res, result) {
   return;
 }
 
-async function send500Error(res, message) {
-  await res.status(500).send(message);
+function send500Error(res, message) {
+   res.status(500).send(message);
   return;
 }
