@@ -27,16 +27,8 @@ exports.getStudentData = (req, res) => {
 exports.insertStudent = (req, res) => {
   const studentData = req.body;
   const hobbiesString = studentData.hobbies.join(", ");
-  db.query(
-    allQueries.insertData,
-    [
-      studentData.stdname,
-      parseInt(studentData.stdage),
-      studentData.gender,
-      studentData.course,
-      hobbiesString,
-    ],
-    (err, result) => {
+  db.query(allQueries.insertData,
+    [studentData.stdname,parseInt(studentData.stdage),studentData.gender,studentData.course,hobbiesString],(err, result) => {
       if (err) {
         console.log("error", err);
         console.log("Data====>>", studentData);
@@ -69,9 +61,8 @@ exports.updateStudent = (req, res) => {
   const updateData = req.body;
   const hobbiesString = updateData.hobbies.join(", ");
   console.log("update id-->", updateId);
-  db.query(
-    allQueries.updateData,[updateData.stdname,updateData.stdage,updateData.gender,updateData.course,hobbiesString,updateId],
-    (err, result) => {
+  db.query(allQueries.updateData,
+           [updateData.stdname,updateData.stdage,updateData.gender,updateData.course,hobbiesString,updateId],(err, result) => {
       if (err) {
         console.log("error in upadte-->", err);
         send500Error(res, "error in update");
